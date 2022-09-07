@@ -1,0 +1,5 @@
+streamlit
+psycopg2
+pandas
+plotly-express
+Django

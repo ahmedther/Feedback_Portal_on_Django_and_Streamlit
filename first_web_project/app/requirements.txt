@@ -1,0 +1,6 @@
+pip install streamlit
+pip install psycopg2
+pip install pandas
+pip install plotly-express
+pip install streamlit-authenticator
+pip install Django

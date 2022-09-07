@@ -1,0 +1,88 @@
+
+body {
+
+    line-height: 2;
+
+}
+
+.img-fluid {
+
+    margin-top: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width:300px;
+    width: 50%;
+    
+
+  }
+
+.col {
+
+    max-width: 300px;
+    margin-top: 5%;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: large;
+    
+
+}
+
+.container {
+
+    text-align : center;
+    color: #666666;
+    font-family: Helvetica;
+
+}
+
+.peup {
+
+      
+    max-width: 295px;
+    margin-top: 5%;
+    text-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    margin-bottom: 0px;
+    
+
+}
+
+#phone {
+
+  user-select: none;
+  width: 323px;
+  padding: 5px;
+  color: #776;	
+  outline: 0px transparent;
+  border: 1px solid #CCC;
+  font-size: 16px;
+  box-sizing: content-box;
+
+
+}
+
+.butta {
+    
+  
+  margin-top: 5%;
+  
+}
+
+.fot {
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: small;
+ 
+  text-align: center;
+
+}
