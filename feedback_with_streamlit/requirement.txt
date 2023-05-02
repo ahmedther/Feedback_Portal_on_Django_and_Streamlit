@@ -1,0 +1,7 @@
+streamlit
+psycopg2
+pandas
+plotly-express
+Django
+cx_oracle
+streamlit-authenticator

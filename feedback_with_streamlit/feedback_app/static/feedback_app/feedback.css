@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap");
+
+body {
+  background: #eeeeee;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.card {
+  width: 350px;
+  border: none;
+  border-radius: 15px;
+}
+
+.adiv {
+  background: #0063ff;
+  border-radius: 15px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  font-size: 12px;
+  height: 46px;
+}
+
+img {
+  margin-right: 0px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.fas {
+  cursor: pointer;
+}
+
+.fa-chevron-left {
+  color: #fff;
+}
+
+h6 {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+small {
+  font-size: 10px;
+  color: #898989;
+}
+
+.form-control {
+  border: none;
+  background: #f6f7fb;
+  font-size: 12px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background: #f6f7fb;
+}
+
+.form-control::placeholder {
+  font-size: 12px;
+  color: #b8b9bd;
+}
+
+.btn-primary {
+  background: #0063ff;
+  padding: 4px 0 7px;
+  border: none;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.btn-primary span {
+  font-size: 12px;
+  color: #a6dcff;
+}
+
+p.mt-3 {
+  font-size: 11px;
+  color: #b8b9bd;
+  cursor: pointer;
+}
+
+.radio {
+  visibility: hidden;
+}
+
+.spacer {
+  height: 30px;
+}
+
+.py-4 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.shadow {
+  box-shadow: 0.3rem 0.3rem 1rem rgba(178, 200, 244, 0.23);
+}
+
+.pb-5 {
+  padding-bottom: 0rem !important;
+}
+
+.label-drop {
+  padding-bottom: 5%;
+}
+
+/* footer starts here */
+
+.footer-section {
+  background: #151414;
+  position: relative;
+}
+
+.copyright-area {
+  background: #ececec;
+  padding-top: 30px;
+  padding-bottom: 5px;
+}
+
+.copyright-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #878787;
+}
+
+.copyright-text p a {
+  color: #0063ff;
+}
+
+.footer-menu li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.footer-menu li:hover a {
+  color: #0063ff;
+}
+
+.footer-menu li a {
+  font-size: 14px;
+  color: #878787;
+}
+
+/* footer ends here */
+
+/* patient welcome card */
+
+/* body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #080710;
+} */
+.background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+  left: -80px;
+  top: -80px;
+}
+
+.shape:last-child {
+  background: linear-gradient(to right, #ff512f, #ffbf00);
+  right: -30px;
+  bottom: -80px;
+}
+
+.wrapper,
+.wrapper .img-area,
+.social-icons a,
+.buttons button {
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.wrapper {
+  margin-top: 32px;
+  position: relative;
+  width: 350px;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapper .img-area {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper .name {
+  text-align: center;
+  font-size: 23px;
+  font-weight: 500;
+  color: #218be3;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .name-female {
+  text-align: center;
+  font-size: 23px;
+  font-weight: 500;
+  color: #d04093;
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .about {
+  color: #ffbf00;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.wrapper .social-icons {
+  margin: 15px 0 25px 0;
+}
+
+.social-icons a {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  margin: 0 5px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.social-icons a:hover::before,
+.wrapper .icon:hover::before,
+.buttons button:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: #ecf0f3;
+  box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+}
+
+.social-icons a i {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.social-icons a:nth-last-child(1) i {
+  color: #13d151;
+}
+
+.social-icons a:nth-last-child(2) i {
+  color: #e6ba12;
+}
+
+.social-icons a:nth-last-child(3) i {
+  color: #1da9e9;
+}
+
+.social-icons a:nth-last-child(4) i {
+  color: #f23400;
+}
+
+.wrapper .buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.buttons button {
+  position: relative;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 0;
+  color: #d0d1d6;
+  font-size: 17px;
+  font-weight: 400;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.buttons button:first-child {
+  margin-right: 10px;
+}
+
+.buttons button:last-child {
+  margin-left: 10px;
+}
+
+.buttons button:hover:before {
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.buttons button:hover {
+  color: black;
+}
+
+/* Deatils list */
+.check-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.check-list li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.check-list li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 5px;
+  height: 11px;
+  border-width: 0 2px 2px 0;
+  border-style: solid;
+  border-color: #00a8a8;
+  transform-origin: bottom left;
+  transform: rotate(45deg);
+}
+
+/* Boilerplate stuff */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.table {
+  color: #000000;
+}
+
+
+.btn {
+  padding: 0;
+}
+
+.radio-btns {
+  padding: .5rem .5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,316 @@
+{% load static %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={% static 'feedback_app/favicon.ico' %} type="image/x-icon">
+    
+    <a><!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </a>
+
+    <link rel="stylesheet" href={% static 'feedback_app/feedback.css' %}>
+    <title>FeedBack</title>
+</head>
+
+<body>
+
+  {% comment %} patient welcome card {% endcomment %}
+  {% if patient_details %}
+
+
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+
+
+      {% if patient_details.patient_gender == "Female"%}
+      <div class="wrapper container d-flex justify-content-center">
+        <div class="img-area">
+          <div class="inner-area">
+            <img src="{% static 'feedback_app/patient_female_icon.png' %}" alt="">
+          </div>
+        </div>
+      <div class="name-female">  
+        {{ patient_details.patient_name }}
+      </div>
+
+      {% comment %} {% if patient.3 == "Male"%} {% endcomment %}
+      {% else %}
+      <div class="wrapper container d-flex justify-content-center">
+        <div class="img-area">
+          <div class="inner-area">
+      <img src="{% static 'feedback_app/patient_male_icon.png' %}" alt="">
+    </div>
+  </div>
+  <div class="name">  
+    {{ patient_details.patient_name }}
+      
+        </div>
+  {%endif%}
+
+    
+
+        
+ <div class="about">
+  <section>
+    <div>
+      <ul class="check-list">
+      <table class="table table-borderless">
+        <tr>
+        <th scope="row">UHID</th>
+        <td><li>{{ patient_details.patient_uhid }}</li></td>
+        </tr>
+        <tr>
+          <th scope="row">Mobile Number</th>
+          <td><li>{{ patient_details.patient_contact_number }}</li></td>
+      </tr>
+            <tr>
+              <th scope="row">Gender</th>
+              <td><li>{{ patient_details.patient_gender }}</li></td>
+            </tr>
+            <tr>
+              <th scope="row">Bed Number</th>
+              <td><li>{{ patient_details.patient_bed_number }}</li></td>
+            </tr>
+            <tr>
+              <th scope="row">Bed Location</th>
+              <td><li>{{ patient_details.patient_bed_location }}</li></td>
+            </tr>
+            <tr>
+              <th scope="row">Admission Date Time</th>
+              <td><li>{{ patient_details.patient_admission_date_time }}</li></td>
+            </tr>
+        
+     
+    </table>
+  </ul>
+    </div>
+  </section>
+
+</div>
+{% comment %} 
+ <div class="social-icons">
+  <a href="#" class="gl"><i class="fab fa-youtube"></i>{{ patient.3 }}</a>
+  <a href="#" class="facebook"><i class="fab fa-facebook">{{ patient.4 }}</i></a>
+  <a href="#" class="insta"><i class="fab fa-google"></i>{{ patient.5 }}</a> 
+  <a href="#" class="yt"><i class="fab fa fa-whatsapp">{{ patient.6 }}</i></a>
+ </div>
+ <div class="buttons">
+  <button>Message</button>
+  <button>Subscribe</button> 
+ </div>{% endcomment %}
+</div>
+{%endif%}
+
+
+
+
+  <form method='POST'>{% csrf_token %}
+    {% if departments %}
+{% for department in departments %}
+    <div class="container d-flex justify-content-center">
+        <div class="card mt-5 pb-5">
+          <div class="d-flex flex-row justify-content-between p-3 adiv text-white shadow">
+            <i class="fas fa-chevron-left"></i>
+            <span class="pb-3">FeedBack for {{ department.department }}</span>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="mt-2 p-4 text-center rounded shadow">
+            <h6 class="mb-0">Your feedback helps us to improve.</h6>
+            
+
+
+            <small class="px-3">Please let us know about your {{ department.department }} experience.</small>
+            <div class="mb-3">
+             
+
+              
+              {% for question in questions %}
+              {% if question.department ==  department.department %}
+              {% comment %} {% for i in data %} {% endcomment %}
+              {% comment %} <td>{{ i }}</td> {% endcomment %}
+              {% comment %} {% endfor %} {% endcomment %}
+              <h5 class="mb-0">{{ question.question }}</h5>
+              <div class="d-flex flex-row justify-content-center mt-2">
+              <div class="btn-group rounded shadow">
+                
+                <button type="button" class="btn btn-outline-dark" >
+                  <label for="{{department.department|add:" "|add:question.question|slugify}} " class="labelexpanded label-area" > 
+                      <div class="radio-btns"> 
+                        <img src="{% static 'feedback_app/emoji_neutral.png' %}"/>
+                        <input id="{{department.department|add:" "|add:question.question|slugify}} "type="radio" name={{department.department|add:" "|add:question.question|slugify}} value='0'>
+                        <h6 class="mb-0">Neutral</h6>
+                        
+                        <span class="visually-hidden ">Button</span>
+                      </div>
+                    </input>
+                   </label>               
+                </button>
+
+
+                <button type="button" class="btn btn-outline-danger">
+                  <label class="labelexpanded"> 
+                    
+                      <div class="radio-btns"> 
+                        <img src="{% static 'feedback_app/emoji_bad.png' %}"/>
+                        <input type="radio" name={{department.department|add:" "|add:question.question|slugify}} value='1'> 
+                        <h6 class="mb-0">Poor</h6>
+                        <span class="visually-hidden">Button</span>
+                      </div>
+                    </input>
+                   </label>               
+                </button>
+
+                 <button type="button" class="btn btn-outline-primary">
+                  <label class="labelexpanded"> 
+                     
+                      <div class="radio-btns"> 
+                        <img src="{% static 'feedback_app/emoji_okay.png' %}"/>
+                        <input type="radio" name={{department.department|add:" "|add:question.question|slugify}} value='2'> 
+                        <h6 class="mb-0">Average</h6>
+                        <span class="visually-hidden">Button</span>
+                      </div>
+                    </input>
+                   </label>               
+                </button>
+
+                <button type="button" class="btn btn-outline-warning">
+                  <label class="labelexpanded"> 
+                     <div class="radio-btns"> 
+                        <img src="{% static 'feedback_app/emoji_good.png' %}"/>
+                        <input type="radio" name={{department.department|add:" "|add:question.question|slugify}} value='3'> 
+                        <h6 class="mb-0">Good</h6>
+                        <span class="visually-hidden">Button</span>
+                      </div>
+                    </input>
+                   </label>               
+                </button>
+               
+                <button type="button" class="btn btn-outline-success">
+                  <label class="labelexpanded">
+                      <div class="radio-btns"> 
+                        <img src="{% static 'feedback_app/emoji_excellent.png' %}"/>
+                        <input type="radio" name={{department.department|add:" "|add:question.question|slugify}} value='4'> 
+                        <h6 class="mb-0">Excellent</h6>
+                        <span class="visually-hidden">Button</span>
+                      </div>
+                    </input>
+                   </label>               
+                </button>
+               
+
+              </div>
+            </div>
+            <div class="spacer"></div>
+             {% endif %} {% endfor %}
+             <div class="form-group mt-4">
+              <textarea class="form-control rounded shadow" rows="4" placeholder="Your Comments" name="patient comment on {{ department.department }}" value=""></textarea>
+              </div>
+
+              
+              
+              
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+{% endfor %}
+
+
+{% endif %}
+
+<div class="container d-flex justify-content-center">
+  <div class="card mt-5 pb-5">
+    <div class="d-flex flex-row justify-content-between p-3 adiv text-white shadow">
+      <i class="fas fa-chevron-left"></i>
+      <span class="pb-3">Suggestions and Recommendations</span>
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="mt-2 p-4 text-center rounded shadow">
+      <h6 class="mb-0">Please type your suggestions and/or  mention anyone who provided you with excellent service.</h6>
+
+  <div class="form-group mt-4">
+  <textarea class="form-control rounded shadow" rows="4" placeholder="Message" name="patient comment" value=""></textarea>
+  </div>
+  <div class="spacer"></div>
+  {% if dropdown_items%}
+  <div class="mt-2 text-center">
+    <h6 class="mb-0 label-drop ">How did you come to know about Kokilaben Hospital?</h6>
+    
+  <select name="patient_ref_by" class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow">
+    <option value="" selected hidden>Please Select An Option From This List</option>
+    {% for items in dropdown_items %}
+    <option >{{ items }}</option>
+    {% endfor %}
+</select>
+
+  <div class="mt-2">
+    {% endif %}
+    
+    <button type="submit" class="btn btn-primary btn-block rounded shadow"><span>Send feedback</span></button>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2018, All Right Reserved <a href="https://github.com/ahmedther">Kokilaben Dhirubhai Ambani Hospital</a></p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://www.kokilabenhospital.com/">Home</a></li>
+                            <li><a href="https://www.kokilabenhospital.com/about/accreditations/accreditations.html">Accreditations</a></li>
+                            <li><a href="#!" onclick='author()'>About</a></li>
+                            <li><a href="https://www.kokilabenhospital.com/contacts/enquires.html">Enquiries</a></li>
+                            <li><a href="https://www.kokilabenhospital.com/contacts.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  <!-- Footer -->
+
+<!-- End of .container -->
+
+
+
+
+</body>
+<script type='text/javascript'>
+
+    function author()
+    {
+        return alert("Designed and Developed by Ahmed Qureshi. Click on © company name to see the GitHub Page.");
+    }
+    
+    </script>
+    
+
+
+</html>
