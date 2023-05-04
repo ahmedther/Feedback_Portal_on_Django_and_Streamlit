@@ -5,3 +5,5 @@ plotly-express
 streamlit-authenticator
 Django
 cx_oracle
+uwsgi
+whitenoise

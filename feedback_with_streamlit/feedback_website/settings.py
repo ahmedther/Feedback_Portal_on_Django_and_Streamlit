@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +25,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-k8i0++)%^%iv+6m%g+y6rce+log=mz3&wc2a(g*g$j5wa=kxxd"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# DEBUG = False
+
+# ALLOWED_HOSTS = [
+#     "127.0.0.1",
+#     "localhost",
+#     "172.20.100.81",
+#     "http://localhost:8004",
+#     "http://172.20.100.81:8004",
+#     "http://localhost:9004",
+#     "http://172.20.100.81:9004",
+#     "172.20.200.40",
+#     "www.kdahlinux.com:8004",
+# ]
+
+
+# CSRF_TRUSTED_ORIGINS = [
+#     "127.0.0.1",
+#     "localhost",
+#     "172.20.100.81",
+#     "http://localhost:8004",
+#     "http://172.20.100.81:8004",
+#     "http://localhost:9004",
+#     "http://172.20.100.81:9004",
+#     "172.20.200.40",
+#     "www.kdahlinux.com:8004",
+# ]
 
 
 # Application definition
@@ -42,6 +70,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -111,23 +140,42 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    "version": 1,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Calcutta"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
+
+USE_TZ = False
+
+STATIC_URL = "/static/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

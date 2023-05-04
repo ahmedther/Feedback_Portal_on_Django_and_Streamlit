@@ -1,12 +1,23 @@
-version: "3.9"
+version: "1.0"
 
 services:
-  app:
+  feedback:
     build:
       context: .
-    ports:
-      - "8000:8000"
+    restart: always
+    image: feedback_docker_image
+    container_name: feedback_docker_container
     volumes:
-      - ./app:/app
-    command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
+      - .:/feedback_and_streamlit
+
+  nginx:
+    build:
+      context: ./nginx
+    image: feedback_nginx_docker_image
+    container_name: feedback_nginx_docker_container
+    restart: always
+    ports:
+      - 8005:8005
+      - 8006:8006
+    volumes:
+      - ./static:/feedback_and_streamlit/static

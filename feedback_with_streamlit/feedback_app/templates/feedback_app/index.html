@@ -42,6 +42,15 @@
 							
 			</div>
 		</div> {% endcomment %}
+		{% if error %}
+		<div  class="overlay" >
+			<div  class="error">
+			  <button class="close-btn" >&times;</button>
+			  <div class="error-head">{{error.0}}</div>
+			  <div class="error-subhead">{{error.1}}</div>
+			</div>
+		  </div>
+		{% endif %}
 
 		<div class="login-box">
 			<p>Search User For Feedback</p>
@@ -77,19 +86,8 @@
 
 
 
-  <script>
-	const link = document.getElementById('anchor-to-submit');
-	const form = document.getElementById('uhid_form');
-  
-	link.addEventListener('click', function(event) {
-	  event.preventDefault();
-	  form.submit();
-	});
-  </script>
-
-
 	</body>
 
-
+	<script src="{% static 'feedback_app/index.js'%}"></script>
 </html>
 

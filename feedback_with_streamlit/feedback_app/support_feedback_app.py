@@ -30,17 +30,14 @@ def get_questions_data(patient_details):
 
 
 def get_patient_details(uhid, encounter_id):
-    db = Ora()
-    [patient_data] = db.get_discharge_patients(uhid, encounter_id)
-    # Filter M to Male and F to Female
     try:
-        if patient_data[4] == "M":
-            gender = "Male"
+        db = Ora()
+        [patient_data] = db.get_discharge_patients(uhid, encounter_id)
 
-        if patient_data[4] == "F":
-            gender = "Female"
-    except:
-        pass
+    except Exception as e:
+        return None
+    # Filter M to Male and F to Female
+    gender = {"M": "Male", "F": "Female"}.get(patient_data[4], "")
 
     patient_details = Patients(
         uhid=patient_data[0],

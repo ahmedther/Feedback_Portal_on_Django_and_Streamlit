@@ -18,6 +18,11 @@ def index(request):
         return render(request, "feedback_app/index.html")
 
     patient_details = get_patient_details(uhid, encounter_id)
+    if not patient_details:
+        context = {
+            "error": ["Details not found.", "Check Entered UHID and Encounter ID"]
+        }
+        return render(request, "feedback_app/index.html", context)
 
     if request.method == "GET":
         question_info = get_questions_data(patient_details)

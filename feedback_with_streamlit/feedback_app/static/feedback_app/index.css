@@ -82,23 +82,22 @@
 
 }
  */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 * {
-  font: 'Roboto',
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  font: 'Roboto',
+  font-family: "Roboto", sans-serif;
+  font: "Roboto";
 }
 
 footer {
   margin-top: 97vh;
-
 }
 
 .login-box {
@@ -109,9 +108,9 @@ footer {
   padding: 40px;
   margin: 20px auto;
   transform: translate(-50%, -55%);
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, 0.9);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -149,7 +148,7 @@ footer {
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .login-box .user-box input:focus~label,
@@ -170,9 +169,9 @@ footer {
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 40px;
-  letter-spacing: 3px
+  letter-spacing: 3px;
 }
 
 .login-box a:hover {
@@ -213,7 +212,7 @@ footer {
   height: 100%;
   background: linear-gradient(180deg, transparent, #fff);
   animation: btn-anim2 1.5s linear infinite;
-  animation-delay: .375s
+  animation-delay: 0.375s;
 }
 
 @keyframes btn-anim2 {
@@ -234,7 +233,7 @@ footer {
   height: 2px;
   background: linear-gradient(270deg, transparent, #fff);
   animation: btn-anim3 1.5s linear infinite;
-  animation-delay: .75s
+  animation-delay: 0.75s;
 }
 
 @keyframes btn-anim3 {
@@ -255,7 +254,7 @@ footer {
   height: 100%;
   background: linear-gradient(360deg, transparent, #fff);
   animation: btn-anim4 1.5s linear infinite;
-  animation-delay: 1.125s
+  animation-delay: 1.125s;
 }
 
 @keyframes btn-anim4 {
@@ -285,14 +284,53 @@ footer {
   border-radius: 5px;
 }
 
-/* #btn-submit {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  background: rgba(0, 0, 0, 0.9);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(54, 54, 54, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  /* add this to make the button relative to the error div */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font: "Roboto";
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
   border: none;
   background-color: transparent;
-  color: inherit;
-  font: 'Roboto', sans-serif;
   cursor: pointer;
   outline: none;
-  letter-spacing: .2rem;
-  height: 100%;
-  width: 100%;
-} */
+}
+
+.error-head,
+.error-subhead {
+  color: #ffffff;
+  font-size: 1.2rem;
+}

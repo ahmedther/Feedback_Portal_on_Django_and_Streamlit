@@ -63,14 +63,15 @@ class Ora:
         
             select d.patient_id,d.encounter_id,m.patient_name,m.contact2_no,m.sex,i.bed_num,n.long_desc,i.admission_date_time,d.dis_adv_date_time 
             from ip_discharge_advice d,ip_open_encounter i,mp_patient m,ip_nursing_unit n
-            where i.facility_id='KH'
-            and d.patient_id = :patient_id
+            -- where i.facility_id='KH'
+            where d.patient_id = :patient_id
             and d.encounter_id=:encounter_id
             and i.patient_id=d.patient_id
             and i.encounter_id=d.encounter_id
             and m.patient_id=d.patient_id
             and i.nursing_unit_code=n.nursing_unit_code
-            and d.cancellation_date_time is null
+            and d.cancellation_date_time is null   
+            FETCH FIRST 1 ROW ONLY
 
         """
 
@@ -78,6 +79,29 @@ class Ora:
             discharge_patients_in_last_hour_qurey, [patient_id, encounter_id]
         )
         data = self.cursor.fetchall()
+
+        if not data:
+            discharge_patients_in_last_hour_qurey = """
+        
+        
+            select d.patient_id,d.encounter_id,m.patient_name,m.contact2_no,m.sex,i.ASSIGN_ROOM_NUM,n.long_desc,i.VISIT_ADM_DATE_TIME,d.dis_adv_date_time 
+            from ip_discharge_advice d,pr_encounter i,mp_patient m,ip_nursing_unit n
+            -- where i.facility_id='KH'
+            where d.patient_id = :patient_id
+            and d.encounter_id=:encounter_id
+            AND i.patient_id=d.patient_id
+            and i.encounter_id=d.encounter_id
+            and m.patient_id=d.patient_id
+            and i.ASSIGN_CARE_LOCN_CODE=n.nursing_unit_code
+            and d.cancellation_date_time is null
+            FETCH FIRST 1 ROW ONLY
+        
+            """
+
+            self.cursor.execute(
+                discharge_patients_in_last_hour_qurey, [patient_id, encounter_id]
+            )
+            data = self.cursor.fetchall()
 
         return data
 
@@ -98,11 +122,40 @@ if __name__ == "__main__":
     for x in b:
         print(x)
 
-        # select d.patient_id,d.encounter_id,m.patient_name,m.contact2_no,m.sex,i.bed_num,n.long_desc,i.admission_date_time,d.dis_adv_date_time
-        # from ip_discharge_advice d,ip_open_encounter i,mp_patient m,ip_nursing_unit n
-        # where i.facility_id='KH'
-        # and i.patient_id=d.patient_id
-        # and i.encounter_id=d.encounter_id
-        # and m.patient_id=d.patient_id
-        # and i.nursing_unit_code=n.nursing_unit_code
-        # and d.cancellation_date_time is null
+    # def get_discharge_patients(self, patient_id, encounter_id):
+    #     discharge_patients_in_last_hour_qurey = """
+
+    #         select d.patient_id,d.encounter_id,m.patient_name,m.contact2_no,m.sex,i.bed_num,n.long_desc,i.admission_date_time,d.dis_adv_date_time
+    #         from ip_discharge_advice d,ip_open_encounter i,mp_patient m,ip_nursing_unit n
+    #         -- where i.facility_id='KH'
+    #         where d.patient_id = :patient_id
+    #         and d.encounter_id=:encounter_id
+    #         and i.patient_id=d.patient_id
+    #         and i.encounter_id=d.encounter_id
+    #         and m.patient_id=d.patient_id
+    #         and i.nursing_unit_code=n.nursing_unit_code
+    #         and d.cancellation_date_time is null
+
+    #     """
+
+    #     self.cursor.execute(
+    #         discharge_patients_in_last_hour_qurey, [patient_id, encounter_id]
+    #     )
+    #     data = self.cursor.fetchall()
+    #     print(data)
+    #     return data
+
+    # def close_database_connection(self):
+    #     if self.cursor:
+    #         self.cursor.close()
+    #     if self.ora_db:
+    #         self.ora_db.close()
+
+    # select d.patient_id,d.encounter_id,m.patient_name,m.contact2_no,m.sex,i.bed_num,n.long_desc,i.admission_date_time,d.dis_adv_date_time
+    # from ip_discharge_advice d,ip_open_encounter i,mp_patient m,ip_nursing_unit n
+    # where i.facility_id='KH'
+    # and i.patient_id=d.patient_id
+    # and i.encounter_id=d.encounter_id
+    # and m.patient_id=d.patient_id
+    # and i.nursing_unit_code=n.nursing_unit_code
+    # and d.cancellation_date_time is null
