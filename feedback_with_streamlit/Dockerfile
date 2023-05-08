@@ -37,7 +37,8 @@ ENV LD_LIBRARY_PATH=/cx_oracle/instantclient_21_9
 
 ENV PATH="/feedback_and_streamlit/scripts:/py/bin:$PATH"
 
-EXPOSE 8005
+EXPOSE 8005 8006
+
 
 CMD ["./scripts/py_run.sh"]
 

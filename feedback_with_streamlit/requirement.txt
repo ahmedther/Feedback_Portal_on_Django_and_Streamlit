@@ -4,4 +4,3 @@ pandas
 plotly-express
 Django
 cx_oracle
-streamlit-authenticator

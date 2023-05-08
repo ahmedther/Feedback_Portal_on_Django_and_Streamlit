@@ -1,6 +1,6 @@
 import streamlit as st
 
-from .support_streamlit import StreamLitAPP
+from support_streamlit import StreamLitAPP
 
 # Main App
 app = StreamLitAPP()

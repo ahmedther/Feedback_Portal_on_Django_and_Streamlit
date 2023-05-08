@@ -13,15 +13,19 @@ from django.shortcuts import render
 
 def index(request):
     uhid = request.GET.get("uhid")
+
     encounter_id = request.GET.get("encounter_id")
     if not uhid and not encounter_id:
         return render(request, "feedback_app/index.html")
-
+    uhid = uhid.upper()
     patient_details = get_patient_details(uhid, encounter_id)
     if not patient_details:
         context = {
-            "error": ["Details not found.", "Check Entered UHID and Encounter ID"]
+            "error": ["Details not found.", "Check Entered UHID and Encounter ID"],
+            "uhid": uhid,
+            "encounter_id": encounter_id,
         }
+
         return render(request, "feedback_app/index.html", context)
 
     if request.method == "GET":

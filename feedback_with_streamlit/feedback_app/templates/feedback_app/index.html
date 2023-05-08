@@ -56,11 +56,11 @@
 			<p>Search User For Feedback</p>
 			<form method='GET' id="uhid_form">
 			  <div class="user-box">
-				<input name="uhid" type="text">
+				<input name="uhid" type="text" {% if uhid %}value={{uhid}}{% endif %}>
 				<label>UHID</label>
 			  </div>
 			  <div class="user-box">
-				<input name="encounter_id" type="text">
+				<input name="encounter_id" {% if encounter_id %}value={{encounter_id}}{% endif %} type="text">
 				<label>Encounter ID</label>
 			  </div>
 			  <a href="" id='anchor-to-submit'> 
@@ -86,8 +86,8 @@
 
 
 
+  <script src="{% static 'feedback_app/index.js'%}"></script>
 	</body>
 
-	<script src="{% static 'feedback_app/index.js'%}"></script>
 </html>
 
