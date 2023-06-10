@@ -2,7 +2,8 @@
 
 set -e
 
-apt-get autoremove -y
+
+ln -snf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && echo Asia/Kolkata > /etc/timezone
 touch /etc/nginx/conf.d/default.conf
 touch /var/log/nginx/feedback.log
 touch /var/log/nginx/feedback_error.log

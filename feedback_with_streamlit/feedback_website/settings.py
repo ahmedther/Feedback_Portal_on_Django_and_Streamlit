@@ -28,38 +28,10 @@ SECRET_KEY = "django-insecure-k8i0++)%^%iv+6m%g+y6rce+log=mz3&wc2a(g*g$j5wa=kxxd
 
 # DEBUG = True
 
-DEBUG = False
+DEBUG = bool(os.getenv("DEBUG", False))
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "172.20.100.81",
-    "http://localhost:8005",
-    "http://localhost:8006",
-    "http://172.20.100.81:8005",
-    "http://172.20.100.81:8006",
-    "http://localhost:9004",
-    "http://172.20.100.81:9004",
-    "172.20.200.40",
-    "www.kdahlinux.com:8005",
-    "www.kdahlinux.com:8006",
-]
-
-
-CSRF_TRUSTED_ORIGINS = [
-    "127.0.0.1",
-    "localhost",
-    "172.20.100.81",
-    "http://localhost:8005",
-    "http://localhost:8006",
-    "http://172.20.100.81:8005",
-    "http://172.20.100.81:8006",
-    "http://localhost:9004",
-    "http://172.20.100.81:9004",
-    "172.20.200.40",
-    "www.kdahlinux.com:8005",
-    "www.kdahlinux.com:8006",
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "*").split(",")
 
 
 # Application definition
@@ -119,11 +91,11 @@ WSGI_APPLICATION = "feedback_website.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "feedback_database",
-        "USER": "postgres",
-        "PASSWORD": "ahmed",
-        "HOST": "172.20.100.81",
-        "PORT": "5432",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "PORT": os.environ.get("POSTGRES_PORT"),
     }
 }
 
@@ -187,5 +159,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost','192.168.34.143',"http://localhost:8001","http://192.168.34.143:8001"]

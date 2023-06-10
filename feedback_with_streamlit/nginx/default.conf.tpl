@@ -1,7 +1,7 @@
 
 
 upstream feedback_app {
-        server feedback:9005;
+        server feedback:${SERVE_DJANGO_ON};
        
     }
 
