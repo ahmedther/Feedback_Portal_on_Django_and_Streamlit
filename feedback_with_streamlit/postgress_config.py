@@ -1,13 +1,14 @@
 import psycopg2
-
+import os
 
 from datetime import datetime
 
-db_name = "feedback_database"
-username = "postgres"
-password = "ahmed"
-host = "172.20.100.81"
-port = 5432
+
+db_name = os.environ.get("POSTGRES_DB")
+username = os.environ.get("POSTGRES_USER")
+password = os.environ.get("POSTGRES_PASSWORD")
+host = os.environ.get("POSTGRES_HOST")
+port = os.environ.get("POSTGRES_PORT")
 
 
 class PostgressDB:

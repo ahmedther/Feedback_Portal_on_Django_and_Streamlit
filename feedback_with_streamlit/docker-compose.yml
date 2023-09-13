@@ -13,30 +13,30 @@ services:
         - .env
     ports:
       - 8006:8006
-    # depends_on:
-    #   - postgres
+    depends_on:
+      - postgres
 
-  # nginx:
-  #   build:
-  #     context: ./nginx
-  #   image: feedback_nginx_docker_image
-  #   container_name: feedback_nginx_docker_container
-  #   restart: always
-  #   volumes:
-  #     - ./static:/feedback_and_streamlit/static
-  #   env_file:
-  #       - .env
-  #   ports:
-  #     - 8005:8005 
+  nginx:
+    build:
+      context: ./nginx
+    image: feedback_nginx_docker_image
+    container_name: feedback_nginx_docker_container
+    restart: always
+    volumes:
+      - ./static:/feedback_and_streamlit/static
+    env_file:
+        - .env
+    ports:
+      - 8005:8005 
 
-  # postgres:
-  #   build:
-  #     context: ./postgresql
-  #   image: feedback_postgresql_image
-  #   container_name: feedback_postgresql_container
-  #   volumes:
-  #     - ./postgresql/data:/var/lib/postgresql/data
-  #   env_file:
-  #     - .env
-  #   # ports:
-  #   # - 5432:5432
+  postgres:
+    build:
+      context: ./postgresql
+    image: feedback_postgresql_image
+    container_name: feedback_postgresql_container
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    # ports:
+    # - 5432:5432

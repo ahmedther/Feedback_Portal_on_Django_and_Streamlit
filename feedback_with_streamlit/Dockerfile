@@ -25,9 +25,10 @@ ENV PYTHONUNBUFFERED 1
 
 COPY --from=builder /py /py
 
+WORKDIR /feedback_and_streamlit
+
 COPY ./ ./
 
-WORKDIR /feedback_and_streamlit
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 curl unzip libaio1 \
