@@ -2,7 +2,7 @@
 
 ### Overview
 
-Developed a comprehensive web application designed to collect and analyze feedback from discharged patients of a hospital. The project is divided into three main components:
+A comprehensive web application designed to collect and analyze feedback from discharged patients of a hospital. The project is divided into three main components:
 
 ### Key Features
 
